@@ -1,4 +1,12 @@
-\section{Place Recognition}
+\section{Appearance-Based Place Recognition}
 \label{sec:chap2}
 
-Vocabulary Tree short overview
+The \textit{BoW} frameworks consists of two disctinct parts, firstly a set of cluster centers from the feature space so that $W=\{w_0, w_1,..., w_k\}$, also called visual words. It is constructed through a hierarchical \textit{K-means} in the same manner as \cite{Nister06} over a set of $20.000$ scans sampled from different datasets, with on average $17.5$ features per scan. The tree architecture has for parameters $K=?$ and $depth=?$ for a total of $?$ words.
+
+The second part is a database and consists of a collection of documents so that $D=\{d_0, d_1,...\}$ and holds the known nodes of the map. Every node is a collection of descriptors extracted from the sensor reading, quantized into words using the above tree and become a document.
+
+Within the database is kept a record of each word occurence in every documents so that as for text retrieval a \textit{Term Frequency} weight and an \textit{Inverse Document Frequency} weight can be associated to the word (\textit{tf-idf}).
+
+At last, a document is characterized by a vector containing the \textit{tf-idf} weights and refered to as its signature. A documents comparison is performed by computing the $cos-similarity$ of their respective signatures.
+
+Given a new sensor reading, its feature descriptors are extracted, converted into words and used to query the database. Its associated signature is computed and then compared to those of every documents in the database; the $N$ most similar documents are returned by the \textit{BoW} scheme.
