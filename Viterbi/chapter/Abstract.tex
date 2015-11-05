@@ -1,5 +1,29 @@
 \begin{abstract}
 
+
+
+Main selling points
+
+1. Weak geometrical check using the Viterbi algorithm to unfuzzy and to weight bag of words candidates
+The Viterbi algorithm searches for the best matching document that preserves as best as possible the ordering of the feature matches. 
+To limit the effect of quantization we have added a small extension to the Viterbi algorithm in which nearest neighbors are searched for each word in the tree leaves and the Viterbi algorithm is allowed to also test comaprisons against these neighbors
+It was made for 1 to 3 NN, but results only improved slightly with teh 1st NN (numbers in the experiments section).
+The result of Viterbi alg. is used to compute a score that is multiplied with the tf-idf weights to compute a matching score of the loop closure candidate. In this way, the weak geometry scheme is combined with the bag of words.
+
+2. Use of the graph SLAM to do database augmentation (this has been done in the past for object recognition, off line process, very expensive) in our case instead of using an off-line similarity search to build the similarity graph, we exploit the fact of having a prebuilt graph of correlations between adjacent nodes (topology) made by the SLAM algorithm.
+
+
+
+
+
+
+
+
+
+
+
+
+
 Robot localization while navigating is one of the fundamental problems of robot navigation. 
 
 
@@ -11,7 +35,6 @@ Appearance-based place recognition characterizes the map in nodes either in term
 We evaluate this method on three SLAM benchmark datasets and demonstrate that it achieves performances similare to state-of-the-art both in terms of recall and precision.
 
 
-sdsds
 
 
 \end{abstract}

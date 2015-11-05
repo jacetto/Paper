@@ -1,6 +1,25 @@
 \section{Appearance-Based Place Recognition}
 \label{sec:chap2}
 
+
+Note for Juan: Emphasize that most BoW work is for images, and only the G-FLIP paper does it for scans. Differences with G-FLIP: a) we use the tree, and b) our weak geometrical check with Viterbi (they do not pay attention for the ordering of the features as we do, they only consider the number of matches and consecutive matches)
+
+Note two:
+
+We do not keep the features???
+
+We discard them when we build the tree and the database (two independent processes)
+Then when it comes to finding the match with Viterbi, we are matching words and not actual FLIRT features. 
+
+I would need to keep the features of the scans of all documents so that the comparison can
+be made for features before entering the RANSAC step when computing the relative transformation.
+
+Simmilarity in geometry to compute the relative transoformation (in my board). The explanation about representing the transformation with complex numbers. and using least squares to sove it.
+
+---
+
+
+
 The \textit{BoW} frameworks consists of two disctinct parts, firstly a set of cluster centers from the feature space so that $W=\{w_0, w_1,..., w_k\}$, also called visual words. It is constructed through a hierarchical \textit{K-means} in the same manner as \cite{Nister06} over a set of $20.000$ scans sampled from different datasets, with on average $17.5$ features per scan. The tree architecture has for parameters $K=?$ and $depth=?$ for a total of $?$ words.
 
 The second part is a database and consists of a collection of documents so that $D=\{d_0, d_1,...\}$ and holds the known nodes of the map. Every node is a collection of descriptors extracted from the sensor reading, quantized into words using the above tree and become a document.
